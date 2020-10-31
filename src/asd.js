@@ -1,5 +1,3 @@
-const CustomError = require("../extensions/custom-error");
-
 class VigenereCipheringMachine {
   constructor(mode = true) {
     this.mode = mode;
@@ -52,4 +50,11 @@ class VigenereCipheringMachine {
   }
 }
 
-module.exports = VigenereCipheringMachine;
+const directMachine = new VigenereCipheringMachine();
+
+const reverseMachine = new VigenereCipheringMachine(false);
+
+console.log(directMachine.encrypt('attack at dawn!', 'alphonse'));
+console.log(reverseMachine.encrypt('attack at dawn!', 'alphonse'));
+console.log(directMachine.decrypt('AEIHQX SX DLLU!', 'alphonse'));
+console.log(reverseMachine.decrypt('AEIHQX SX DLLU!', 'alphonse'));
